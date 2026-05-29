@@ -69,31 +69,5 @@ print(f"\nQuantidade de linhas duplicadas após limpeza: {df_varejo_limpo.duplic
 print()
 print(df_varejo_limpo.info())
 
-print()
-print('################################################################################')
-
-#Agrupamento dos dados por cliente para análise da quantidade de filhos (CL_ID) e a quantidade de filhos (CL_FHL)
-df_cli_agrupado = df_varejo_limpo.groupby('CL_ID', as_index=False)[['CL_FHL']].max()
-
-
-# Exibir o resultado
-print(df_cli_agrupado)
-
-print('################################################################################') 
-
-
-print('Análise estatística da coluna CL_FHL')
-if 'CL_FHL' in df_cli_agrupado.columns:
-    estatisticas_filhos = df_cli_agrupado['CL_FHL'].describe()
-    moda_filhos = df_cli_agrupado['CL_FHL'].mode()[0]
-    
-    print(f"Contagem: {estatisticas_filhos['count']}")
-    print(f"Média: {estatisticas_filhos['mean']:.2f}")
-    print(f"Mediana: {df_cli_agrupado['CL_FHL'].median()}")
-    print(f"Moda: {moda_filhos}")
-    print(f"Desvio Padrão: {estatisticas_filhos['std']:.2f}")
-    print(f"Mínimo: {estatisticas_filhos['min']}")
-    print(f"Quartil 25%: {estatisticas_filhos['25%']}")
-    print(f"Quartil 50% (Mediana): {estatisticas_filhos['50%']}")
-    print(f"Quartil 75%: {estatisticas_filhos['75%']}")
-    print(f"Máximo: {estatisticas_filhos['max']}")
+#Exportando o DataFrame limpo para um novo arquivo CSV
+df_varejo_limpo.to_csv('D:\\SCTEC\\Base_Varejo_Limpa.csv', index=False)
