@@ -111,18 +111,10 @@ print(df_contagem_fhl)
 print()
 print('################################################################################')
 
-# 1. Faz a contagem passando a lista de colunas (sem o as_index)
+# Contagem de filhos cruzada por Gênero, Estado Civil e Classe Social.
 df_cruzado = df_cli_agrupado[['CL_FHL', 'CL_GENERO', 'CL_EC', 'CL_SEG']].value_counts()
-
-# 2. Transforma o resultado em DataFrame de forma segura
 df_cruzado = df_cruzado.reset_index()
-
-# 3. Ajusta o nome da coluna de contagem (o Pandas antigo costumava chamá-la de 0 ou 'size')
-# Esse comando garante que, não importa o nome antigo, ela vire 'Total_de_Clientes'
 df_cruzado.columns = ['CL_FHL', 'CL_GENERO', 'CL_EC', 'CL_SEG', 'Total_de_Clientes']
-
-# 4. Ordena pela quantidade de filhos
 df_cruzado = df_cruzado.sort_values(by='CL_FHL')
-
 print("\nContagem detalhada de clientes:")
 print(df_cruzado)
