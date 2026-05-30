@@ -33,6 +33,23 @@ O script está dividido logicamente nas seguintes etapas estruturadas:
 
 ---
 
+
+## Como rodar o programa completo:
+
+Como rodar o programa completo:
+
+* Baixe o código via Git clone
+* Baixe as dependencias via comando `pip install -r requirements.txt`
+* Execute o script principal:
+
+
+```Bash
+
+python MiniProjeto_MarcoOlinger_AnaliseDeDados_Turma1.py
+
+```
+
+
 ## Outputs Gerados no Console
 Ao executar o script, as seguintes informações enriquecidas são exibidas no console:
 
