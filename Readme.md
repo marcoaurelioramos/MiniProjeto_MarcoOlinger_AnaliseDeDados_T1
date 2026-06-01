@@ -33,6 +33,25 @@ O script está dividido logicamente nas seguintes etapas estruturadas:
 
 ---
 
+## Metodologia e Soluções Aplicadas
+
+* Importação de base de dados principal através do `pd.read_csv`;
+* Usado  `print` associado a `.head`, `.shape` e `.info` para informações sobre estrutura dos dados;
+* Validação de nulos com `isnull().sum()` e de duplicatas com `duplicated().sum()`;
+* Usado o  `drop` para remover colunas vazias importadas da base inicial;
+* Criada um novo DF, a partir do inical, para conter os dados limpos e mantermos os originais;
+* Para remoção de espaços em brqanco na colna `PR_CAT` foi usado `.astype(str).str.strip().str.capitalize()`
+* A coluna `DATA` foi importada como string, para converter em date/time foi usado `.to_datetime` com os parametros `format='%d/%m/%Y'` e `errors='coerce'`; 
+* Usado `.replace(r'^\s*$', np.nan, regex=True)` para certificar que não hajam campos vazios;
+* Para remoção de dupicatas, usei `.drop_duplicates()` ;
+* Após a higienização, exporte a base limpa com `to_csv` usando o parâmetro `index=False`;
+* Para as análises baseadas nas quantidades de filhos dos clientes, foi preciso fazer um agrupamento por cliente para podermos chegar a quantidade de filhos do mesmo, para isso usei `.sort_values(by=['CL_ID', 'CL_FHL'], ascending=[True, False]).drop_duplicates(subset=['CL_ID'])`;
+* Separei os filhos em um novo DF para análises estatística, e em seguida fiz um apanhado das estatísticas usando os comandos: `'count'`, `'mean'`, `'median'`, `'moda'`, `'std'`, `'min'`, `'max'`, `'25%'`, `'50%'` e `'75%'`;
+* Usado  `.sort_values` para fazer a contagem de clientes pelo número de filhos;
+* Finalizando, fiz uma exibição comparativa entre número de filhos, associado ao gênero, estado civil e classe social dos clientes;
+
+---
+
 
 ## Como rodar o programa completo:
 
